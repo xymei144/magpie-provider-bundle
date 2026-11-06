@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>供应商总览</title>
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+  <!-- Inline so it still shows if style.css/app.js never arrive (WebView2 sandbox). -->
+  <style>
+    #bootNote{position:fixed;inset:0;display:grid;place-content:center;gap:8px;padding:24px;text-align:center;
+      background:#121316;color:#e8e9ec;font:13px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",system-ui,sans-serif}
+    #bootNote strong{font-size:14px}
+    #bootNote span{color:#8b8f98;max-width:460px}
+    #bootNote code{font-family:ui-monospace,Consolas,monospace;color:#b9bcc4}
+  </style>
+  <script src="_magpie/bridge.js"></script>
+  <script src="catalog.js"></script>
+  <script src="snapshot.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="bootNote">
+    <strong>页面资源没有加载完整</strong>
+    <span>样式和脚本没有从 Magpie 取得。常见原因是 Magpie 直接启动了 exe：请用开始菜单或托盘的「Magpie」启动（它会带上 WebView2 参数），然后点右上角重试。</span>
+  </div>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="seal" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <strong>供应商总览</strong>
+      </div>
+
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <input id="search" type="search" placeholder="搜索供应商、账号或错误" autocomplete="off" spellcheck="false">
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+
+      <nav class="filters" id="filters" aria-label="按状态筛选"></nav>
+
+      <div class="topbar-tools">
+        <time class="clock" id="clock"></time>
+        <select id="refreshEvery" class="refresh-select" aria-label="快照刷新频率">
+          <option value="0">手动刷新</option>
+          <option value="5">每 5 秒</option>
+          <option value="10">每 10 秒</option>
+          <option value="30">每 30 秒</option>
+          <option value="60">每 60 秒</option>
+        </select>
+        <button class="icon-btn" id="refreshBtn" type="button" title="立即刷新快照" aria-label="立即刷新快照">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M19 8.5A7.5 7.5 0 1 0 19.4 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M19.6 4.5v4.2h-4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="summary" aria-label="概览">
+        <button class="stat" id="statSignedBtn" type="button" title="只看已登录">
+          <span>已登录</span><b id="statSigned">0</b><small>/ <span id="statTotal">0</span></small>
+        </button>
+
+        <div class="bar" id="healthBar" aria-hidden="true">
+          <i class="ok" id="barOk"></i><i class="wait" id="barWarn"></i><i class="bad" id="barErr"></i><i class="off" id="barOff"></i>
+        </div>
+
+        <div class="stat is-static">
+          <span>今日签到</span><b id="statCheckins">0</b><small>/ <span id="statCheckinsTotal">0</span></small>
+        </div>
+        <i class="rule" aria-hidden="true"></i>
+        <button class="stat" id="statErrorBtn" type="button" title="只看异常">
+          <span>异常</span><b id="statErrors">0</b>
+        </button>
+        <i class="rule" aria-hidden="true"></i>
+        <div class="stat is-static"><span>账户</span><b id="statAccounts">0</b></div>
+
+        <div class="sort">
+          <select id="sortBy" class="sort-select" aria-label="排序方式" title="排序方式">
+            <option value="default">默认顺序</option>
+            <option value="status">按状态</option>
+            <option value="quota">按剩余额度</option>
+            <option value="checkin">按签到</option>
+            <option value="name">按名称</option>
+          </select>
+          <button class="icon-btn sort-dir" id="sortDir" type="button" title="切换升降序" aria-label="切换升降序" aria-pressed="false">
+            <span aria-hidden="true">↓</span>
+          </button>
+        </div>
+        <span class="snap"><i></i><span id="snapAt">暂无快照</span></span>
+      </section>
+
+      <section class="board" aria-label="供应商列表">
+        <header class="board-head">
+          <span>供应商</span>
+          <span>额度</span>
+          <span>签到</span>
+          <span class="right" title="控制该供应商是否在 Magpie 中启用；不会删除账号或密钥。">启用</span>
+        </header>
+        <div class="list" id="grid"></div>
+        <div class="empty" id="empty" hidden>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M15.6 15.6L20 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <strong>没有匹配的供应商</strong>
+          <span>换个关键词或状态试试。</span>
+        </div>
+      </section>
+
+      <section class="tools-section" id="toolsSection" hidden>
+        <header class="section-head"><h2>插件工具</h2><span id="toolCount">0</span></header>
+        <div class="list" id="tools"></div>
+      </section>
+
+      <footer class="page-foot">
+        <span>所有登录状态与供应商 ID 保持原样；页面只读本地快照，不执行登录或退出。</span>
+        <span>退出 / 重设：网页登录点账号行右侧 <code>…</code> → <code>移除</code>；Key 模式点 Key 行右侧铅笔替换。</span>
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="quota-dialog" id="quotaDialog" aria-labelledby="quotaDialogTitle">
+    <form class="quota-form" id="quotaForm">
+      <header>
+        <h2 id="quotaDialogTitle">七牛云额度上限</h2>
+        <p>七牛只返回今日已用量。声明档位后，页面按免费模型计算剩余额度。</p>
+      </header>
+      <label class="quota-field">
+        <span>额度来源</span>
+        <select id="quotaTier">
+          <option value="">未设置（只显示已用）</option>
+          <option value="verified">实名认证 · 1 亿/天</option>
+          <option value="verified-plus">实名 + 充值满 100 元 · 10 亿/天</option>
+          <option value="custom">自定义每日上限</option>
+        </select>
+      </label>
+      <label class="quota-field" id="quotaCustomField" hidden>
+        <span>每日 token 上限</span>
+        <input id="quotaCustom" type="number" min="1" step="1" inputmode="numeric" placeholder="例如 100000000" autocomplete="off">
+        <span class="quota-hint">1 亿 = 100000000。有上限时只统计名称含 -free 的模型。</span>
+      </label>
+      <p>活动档位按七牛 2026-11-30 前的规则换算；活动结束后请改填自定义上限。</p>
+      <footer>
+        <button type="button" class="quota-cancel" id="quotaCancel">取消</button>
+        <button type="submit" class="quota-save">保存</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

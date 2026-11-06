@@ -1,0 +1,30 @@
+{
+  "name": "magpie-spark-x2-auth",
+  "version": "0.2.0",
+  "description": "Magpie provider for iFlytek Spark-X2.6 on the Astron MaaS OpenAI-compatible API",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "console.mjs",
+    "browser.mjs"
+  ],
+  "keywords": [
+    "magpie",
+    "magpie-plugin",
+    "spark",
+    "xfyun",
+    "openai-compatible"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "magpie": {
+    "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2314181c'/%3E%3Cpath d='M16 5.5l2.4 7.1 7.1 2.4-7.1 2.4-2.4 7.1-2.4-7.1L6.5 15l7.1-2.4z' fill='%23d8ff6e'/%3E%3Ccircle cx='16' cy='15' r='2.1' fill='%2314181c'/%3E%3C/svg%3E",
+    "maxConcurrency": 4
+  }
+}

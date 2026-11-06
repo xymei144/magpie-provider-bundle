@@ -1,0 +1,56 @@
+{
+  "name": "magpie-provider-bundle",
+  "version": "0.6.8",
+  "private": true,
+  "description": "One Magpie plugin for all third-party providers, with a single overview page, per-provider switches and unchanged upstream drivers",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "providers.config.mjs",
+    "runtime",
+    "page",
+    "vendor",
+    "NOTICE.md",
+    "README.md",
+    "vendor.lock.json"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "lock": "node scripts/lock.mjs",
+    "spark:models": "node scripts/spark-models.mjs",
+    "verify": "node scripts/verify.mjs",
+    "regression": "node scripts/regression.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "test": "node scripts/generate.mjs && node scripts/lock.mjs && node scripts/verify.mjs && node scripts/regression.mjs && node scripts/smoke.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "magpie": {
+    "maxConcurrency": 4,
+    "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADfUlEQVR4nOxZz08TQRT+3tagicZwV+LRkCrE+COSmOjBIzVwV2OMsRL+ACDx4MFYSLgi4slf8UqDHE3wIDEhVEQl6Fm9c/EAsvN82/3R3Xa2pApt6Mx3YMKbmTfvfTv93r7WgeFwYDgsATAclgAYDksADIclAIbDEgDDYQmA4TiANsH5L1NdLjKXiek4Q/1wD+Ld6smhXzvto7SJvoXf/czuKJPKAm4nkQKTKzNKdsVGsct8eZSDQWLjxJrKfGjjlP3Vvn0/akPm1xyHx5dO357XxXru80yeiScJdCS0MWMDGQyXsvnXaJSAvrebA+z8mS0nxS7I8ZKTkVjGbdnFsaS3A3uwLrHeH0HJ/dH62HzZX8r+cJRTB0s9d4rxWM98fdLrMD5K8jUfZ1m/Jb4uLmeHVpACrQaw446UuREPRGU25T+CF7bPGQfUcWQP1yEcPXswIthfsz7mJ3IbP6/KjwM1UpMA45Eu+eDkDlb0EHWQIoJON/tR+CkHwfrXxU8izNb/S0HQiJJIGhCRxyEJISkxkkK30XkhycHIhO7aJOks6mCneT0BrIIkkAg2eiKxmxAPsvom4B9vAFJugO9vd6EngGjdH5EIlsLoIulIBunNh0/QdxNLroEbgJQbQGFcMci6EupA3H1AowQopSbiT66uBsRvQB0NwC5ogGIvriTI4fu+kmqT31LED9AoAUtXDxdFeHNy5qIEuVHRgEoSkQYkbgAa0ACurwEckStlkBYVUa7Uky9Wx+opvPic1OUh2wsrp+6tog4IbYLe79PHMpu4IrWiS94JfrodvPBfL0KmwDZDMBy2G0ybePpqrl8UeFTUOSty3In9CJYKQlgTqRu/e/2atpHSiuDMyzcD0rDMoo3ATIP5G7maMqpvIohH0GZIy0nfDYK70WZIy8lWAZ1RXlHX0WZIy0n/EWCaQJshLSctAYFa5mTbYrmU7FeUY5ccJBddBfBgewEYDksADIdthtImbg6P9YtCjopOyi9D2MtmyFPqNfkmbPzFVGEeTYa2CtwaGpNfhqjpzRApHnw2XSiiidC/CBG1pBlqxbkpGtCqZqj559oqoDe3qhlq/rn6bpC5Jc1QK87N6Iyflt9/671wqSQl4oSEdVRMh7B38MpgScrg8PPHhTk0GbYZguGwBMBwWAJgOCwBMByWABgOSwAMhyUAhsN4Av4CAAD//9j99awAAAAGSURBVAMAuf/OykZIj/0AAAAASUVORK5CYII=",
+    "page": {
+      "title": "供应商总览",
+      "file": "page/index.html",
+      "titles": {
+        "zh": "供应商总览"
+      },
+      "icon": "page/icon.png"
+    },
+    "panels": [
+      {
+        "slot": "provider",
+        "file": "page/provider-panel.html",
+        "title": "Provider status",
+        "titles": {
+          "zh": "供应商状态"
+        }
+      }
+    ]
+  }
+}

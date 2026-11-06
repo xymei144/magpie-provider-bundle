@@ -1,0 +1,9 @@
+# Generated at runtime by runtime/snapshot.mjs: holds this machine's quota,
+# check-in outcomes and account labels.
+page/snapshot.js
+
+node_modules/
+*.zip
+*.tgz
+.DS_Store
+Thumbs.db

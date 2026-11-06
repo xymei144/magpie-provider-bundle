@@ -1,0 +1,80 @@
+{
+  "astudio": {
+    "name": "@magpie-community/opencode-astudio-auth",
+    "version": "0.1.3",
+    "license": "MIT",
+    "sha256": "26499ba9c6ce243579fcbbadc710a2493d3eafce67dc032f15d201323ac49383"
+  },
+  "codearts": {
+    "name": "@magpie-community/opencode-codearts-auth",
+    "version": "0.3.1",
+    "license": "MIT",
+    "sha256": "d2aed10651e42763833fcc4bd9df4fb1d08a7288194b270e09a9c34ca886bc58"
+  },
+  "hub": {
+    "name": "magpie-providers-hub",
+    "version": "0.11.0",
+    "license": "MIT",
+    "sha256": "61144539061b73a4a5ba360767952ff8b8c3ced8d700e51a50f9936243f5c753"
+  },
+  "longcat": {
+    "name": "magpie-longcat-auth",
+    "version": "0.1.0",
+    "license": "MIT",
+    "sha256": "b4f7f588af4fb1178dbb636e2235647efb845551fbdfe0308c311e2abfe00f79"
+  },
+  "minimax": {
+    "name": "@magpie-community/opencode-minimax-auth",
+    "version": "0.2.1",
+    "license": "MIT",
+    "sha256": "7b71c789da1e25382fae74c4c90519b0d7a3dd430d310f26f0f3270b1ba79be1"
+  },
+  "qiniu": {
+    "name": "opencode-qiniu-auth",
+    "version": "0.5.0",
+    "license": "MIT",
+    "sha256": "309e30acaa5f8c572f4bd69a948a75e02c45d483995c9edc9c1b267b4a1480f5"
+  },
+  "qoder": {
+    "name": "@magpie-community/opencode-qoder-auth",
+    "version": "0.2.61",
+    "license": "MIT",
+    "sha256": "0b135827d849e41f8fa3b78f7a5b8325d1eff41a3444759dfaf3aa20f5ec95da"
+  },
+  "raccoon": {
+    "name": "@magpie-community/opencode-raccoon-auth",
+    "version": "0.1.6",
+    "license": "MIT",
+    "sha256": "78b36012501753e8c5aab9c1bed60fb3efc5022da6f415300198beafcb1841e9"
+  },
+  "sensenova": {
+    "name": "st-sensenova-magpie",
+    "version": "0.2.3",
+    "license": "MIT",
+    "sha256": "b922d959f554c08ed67adacee7bbe0c8e3ea57ab26ce7f8fa841606226efb65e"
+  },
+  "spark": {
+    "name": "magpie-spark-x2-auth",
+    "version": "0.2.0",
+    "license": "MIT",
+    "sha256": "0bc4ffa8af8800d449a1bc9ccd98e5143c9617aa4925628d63fa229a82d86110"
+  },
+  "workbuddy": {
+    "name": "@magpie-community/opencode-workbuddy-auth",
+    "version": "0.2.20",
+    "license": "MIT",
+    "sha256": "1411ddc200b78d175bb697e396b672198d31af6b80ef5dfe0c3544c7d3d15615"
+  },
+  "zcode": {
+    "name": "@magpie-community/opencode-zcode-auth",
+    "version": "0.1.44",
+    "license": "MIT",
+    "sha256": "ad93cbb0e440b9234cbad2f4e55061aa552ccb60e759a77bc5eabdd200c05011"
+  },
+  "zen-free": {
+    "name": "@magpie-community/opencode-zen-free-auth",
+    "version": "0.1.24",
+    "license": "MIT",
+    "sha256": "570436bb1494261371db95c89db8982d1b5a79e25c17ec6aab82a22ae99ff27a"
+  }
+}

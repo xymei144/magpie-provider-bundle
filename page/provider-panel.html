@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>供应商状态</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --panel-bg: var(--magpie-bg, Canvas);
+    --panel-surface: var(--magpie-card, Canvas);
+    --panel-surface-2: color-mix(in srgb, var(--magpie-card, Canvas) 78%, var(--magpie-bg, Canvas));
+    --panel-surface-3: color-mix(in srgb, var(--magpie-card, Canvas) 54%, var(--magpie-bg, Canvas));
+    --panel-fg: var(--magpie-fg, CanvasText);
+    --panel-fg-2: var(--magpie-fg-2, CanvasText);
+    --panel-muted: var(--magpie-muted, GrayText);
+    --panel-faint: var(--magpie-faint, GrayText);
+    --panel-line: var(--magpie-line, color-mix(in srgb, CanvasText 14%, transparent));
+    --panel-accent: var(--magpie-accent, LinkText);
+    --panel-ok: var(--magpie-green, #46b97e);
+    --panel-warn: var(--magpie-amber, #d7a44c);
+    --panel-bad: var(--magpie-red, #ef6b66);
+    --panel-radius: 14px;
+    --panel-radius-sm: 9px;
+    --panel-mono: var(--magpie-code, "Cascadia Mono", Consolas, monospace);
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; padding: 0; background: transparent; }
+  body {
+    color: var(--panel-fg);
+    font: 13px/1.5 var(--magpie-font, "Segoe UI Variable Text", "Segoe UI", "PingFang SC", sans-serif);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .panel {
+    border: 1px solid var(--panel-line);
+    border-radius: var(--panel-radius);
+    overflow: hidden;
+    background: var(--panel-surface);
+    box-shadow:
+      0 1px 0 color-mix(in srgb, var(--panel-fg) 3%, transparent) inset,
+      0 18px 42px -34px color-mix(in srgb, #000 60%, transparent);
+  }
+  .head {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 50px;
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--panel-line);
+    background:
+      linear-gradient(110deg, color-mix(in srgb, var(--panel-accent) 6%, transparent), transparent 52%),
+      color-mix(in srgb, var(--panel-surface) 90%, var(--panel-bg));
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex: none;
+    background: var(--panel-muted);
+  }
+  .dot.ok { background: var(--panel-ok); box-shadow: 0 0 0 3px color-mix(in srgb, var(--panel-ok) 14%, transparent); }
+  .dot.warn { background: var(--panel-warn); box-shadow: 0 0 0 3px color-mix(in srgb, var(--panel-warn) 14%, transparent); }
+  .dot.bad { background: var(--panel-bad); box-shadow: 0 0 0 3px color-mix(in srgb, var(--panel-bad) 14%, transparent); }
+  .title {
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .status {
+    flex: none;
+    height: 20px;
+    padding: 0 8px;
+    border: 1px solid var(--panel-line);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--panel-surface) 70%, transparent);
+    color: var(--panel-muted);
+    font-size: 10.5px;
+    line-height: 18px;
+  }
+  .status.ok {
+    border-color: color-mix(in srgb, var(--panel-ok) 28%, var(--panel-line));
+    background: color-mix(in srgb, var(--panel-ok) 9%, transparent);
+    color: color-mix(in srgb, var(--panel-ok) 82%, var(--panel-fg));
+  }
+  .status.warn {
+    border-color: color-mix(in srgb, var(--panel-warn) 28%, var(--panel-line));
+    background: color-mix(in srgb, var(--panel-warn) 9%, transparent);
+    color: var(--panel-warn);
+  }
+  .status.bad {
+    border-color: color-mix(in srgb, var(--panel-bad) 28%, var(--panel-line));
+    background: color-mix(in srgb, var(--panel-bad) 9%, transparent);
+    color: var(--panel-bad);
+  }
+  .id {
+    flex: none;
+    overflow: hidden;
+    max-width: 180px;
+    padding: 1px 6px;
+    border-radius: 5px;
+    background: var(--panel-surface-3);
+    color: var(--panel-faint);
+    font: 10.5px/1.6 var(--panel-mono);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .grow { flex: 1; }
+  .note {
+    flex: none;
+    color: var(--panel-faint);
+    font-family: var(--panel-mono);
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .body { padding: 14px 15px 15px; }
+  .label {
+    margin-bottom: 7px;
+    color: var(--panel-faint);
+    font-size: 10.5px;
+    letter-spacing: .06em;
+  }
+  .native + .label,
+  .chips + .facts {
+    margin-top: 13px;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    min-height: 21px;
+  }
+  .chip {
+    max-width: 100%;
+    padding: 2px 8px;
+    border: 1px solid color-mix(in srgb, var(--panel-accent) 20%, var(--panel-line));
+    border-radius: 7px;
+    background: color-mix(in srgb, var(--panel-accent) 7%, transparent);
+    color: color-mix(in srgb, var(--panel-fg-2) 92%, var(--panel-accent));
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chip.more {
+    border-color: var(--panel-line);
+    background: var(--panel-surface-3);
+    color: var(--panel-faint);
+    font-family: var(--panel-mono);
+  }
+  .empty { color: var(--panel-faint); font-size: 12px; }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    margin: 10px 0 0;
+    border: 1px solid var(--panel-line);
+    border-radius: var(--panel-radius-sm);
+    overflow: hidden;
+    background: var(--panel-line);
+  }
+  .facts > div {
+    min-width: 0;
+    padding: 8px 10px;
+    background: var(--panel-surface-2);
+  }
+  .facts dt {
+    color: var(--panel-faint);
+    font-size: 10.5px;
+  }
+  .facts dd {
+    margin: 2px 0 0;
+    color: var(--panel-fg-2);
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .connect {
+    margin-top: 10px;
+    padding-top: 11px;
+    border-top: 1px dashed var(--panel-line);
+  }
+  .kv {
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 8px;
+    align-items: baseline;
+    min-height: 20px;
+  }
+  .kv > span { color: var(--panel-faint); font-size: 11.5px; }
+  .kv > code {
+    min-width: 0;
+    color: var(--panel-fg-2);
+    font: 11px/1.5 var(--panel-mono);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .error {
+    margin: 9px 0 0;
+    padding: 8px 10px;
+    border: 1px solid color-mix(in srgb, var(--panel-bad) 24%, var(--panel-line));
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--panel-bad) 8%, transparent);
+    color: var(--panel-bad);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+  .native {
+    margin: 0 0 10px;
+    padding: 10px 11px;
+    border: 1px solid color-mix(in srgb, var(--panel-accent) 20%, var(--panel-line));
+    border-radius: var(--panel-radius-sm);
+    background:
+      linear-gradient(110deg, color-mix(in srgb, var(--panel-accent) 7%, transparent), transparent 64%),
+      var(--panel-surface-2);
+  }
+  .native .label {
+    margin-bottom: 3px;
+    color: var(--panel-fg-2);
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+  .hint {
+    margin: 0;
+    color: var(--panel-faint);
+    font-size: 11.5px;
+    line-height: 1.6;
+  }
+  .hint code {
+    padding: 1px 4px;
+    border-radius: 4px;
+    background: var(--panel-surface-3);
+    color: var(--panel-fg-2);
+    font: 10.5px/1.4 var(--panel-mono);
+  }
+  .hint + .hint { margin-top: 4px; }
+  .foot {
+    margin: 11px 0 0;
+    padding-top: 10px;
+    border-top: 1px solid var(--panel-line);
+    color: var(--panel-faint);
+    font-size: 10.5px;
+    line-height: 1.55;
+  }
+  @media (max-width: 560px) {
+    .note { display: none; }
+    .head { padding-inline: 12px; }
+    .body { padding-inline: 12px; }
+    .facts { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+</head>
+<body>
+<section class="panel" aria-label="供应商状态">
+  <header class="head">
+    <span class="dot" id="dot"></span>
+    <strong class="title" id="title">供应商状态</strong>
+    <code class="id" id="providerId" hidden></code>
+    <span class="grow"></span>
+    <span class="status" id="status">读取中</span>
+    <span class="note" id="snapAt"></span>
+  </header>
+  <div class="body">
+    <div class="native">
+      <div class="label">退出 / 重设</div>
+      <p class="hint" id="nativeHint">正在读取登录方式…</p>
+      <p class="hint">左下角红色的 <code>移除</code> 会删除整个供应商，不是退出账号。</p>
+    </div>
+
+    <div class="label" id="accountsLabel">已绑定账号</div>
+    <div class="chips" id="accounts"><span class="empty">正在读取…</span></div>
+
+    <dl class="facts">
+      <div><dt>模型</dt><dd id="models">—</dd></div>
+      <div><dt>额度</dt><dd id="quota">—</dd></div>
+      <div><dt>签到</dt><dd id="checkin">—</dd></div>
+      <div><dt>登录方式</dt><dd id="login">—</dd></div>
+    </dl>
+
+    <div class="connect" id="connect" hidden>
+      <div class="label">连接</div>
+      <div class="kv" id="baseUrlRow"><span>Base URL</span><code id="baseUrl"></code></div>
+      <div class="kv" id="protocolRow"><span>协议</span><code id="protocol"></code></div>
+      <div class="kv" id="defaultModelRow"><span>默认模型</span><code id="defaultModel"></code></div>
+    </div>
+
+    <p class="error" id="error" hidden></p>
+    <p class="foot" id="foot">只读状态面板；退出 / 重设仍由上方 Magpie 原生控件完成。Key 与令牌由 Magpie 保存，不会进入页面，也不会写入快照。</p>
+  </div>
+</section>
+<script src="_magpie/bridge.js"></script>
+<script src="catalog.js"></script>
+<script src="snapshot.js"></script>
+<script src="provider-panel.js"></script>
+</body>
+</html>
