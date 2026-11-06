@@ -10,6 +10,45 @@ CodeArts, OfficeAce, 商汤小浣熊, 商汤日日新, AStudio desktop, Spark-X2
 LongCat, Qoder, OpenCode Zen Free, 七牛云 Conatus, and the 10 Providers Hub
 channels (including Loomy and MonkeyCode CN/Global).
 
+## 快速开始（中文）
+
+**这是什么**：一个 Magpie 插件，把 25 家第三方供应商（ZCode、WorkBuddy、MiniMax、
+CodeArts、商汤小浣熊/日日新、LongCat、Qoder、七牛云、Spark、Providers Hub 各频道等）
+收进同一个插件，并提供一个「供应商总览」页面，看额度、签到状态和账号数。
+
+**安装**（需要先装 Magpie，命令行能用 `magpie`）：
+
+```
+magpie plugin add github:xymei144/magpie-provider-bundle
+```
+
+也可以把仓库克隆下来，用 `magpie plugin add <文件夹路径>`。之后升级用
+`magpie plugin update`。
+
+**登录**：装完只是多了供应商条目，凭证要自己弄。打开 Magpie 的「供应商」页，
+逐个登录或填 API Key——扫码类的点登录，纯 Key 类的贴 Key。密钥保存在你自己的
+`~/.config/magpie/plugin-auth.json`，**不会随插件分发**，也不会出现在页面快照里。
+
+**看额度**：侧边栏打开「供应商总览」。默认只显示已登录的；点开一行可以看每个账号、
+每个窗口的余额和续期时间。每家能显示什么取决于它自己的接口——有的给剩余额度，
+有的只给余额，LongCat 这类没有额度接口的只能按本机用量记账。
+
+**签到**：在 Magpie 设置里勾选要自动签到的供应商，之后每天自动跑；失败会在总览页
+显示原因。
+
+**页面白屏 / 「页面没有响应」**：部分 Magpie 版本（0.1.2983 起）把插件页放在沙箱
+iframe 里，子资源被拦，页面加载不出来。带这两个参数启动即可：
+
+```
+WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=--disable-site-isolation-trials --disable-features=IsolateOrigins,site-per-process
+```
+
+没有页面的纯供应商插件不受影响。
+
+**来源与改动**：`vendor/` 是上游供应商插件，原样引用，版本锁在 `vendor.lock.json`，
+来源声明见 `NOTICE.md`；本仓库只加了聚合层（`runtime/`）、页面（`page/`）和配置
+（`providers.config.mjs`）。
+
 ## Use it on another machine
 
 1. Install Magpie, with `magpie` on `PATH`.
