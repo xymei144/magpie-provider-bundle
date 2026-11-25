@@ -1,0 +1,231 @@
+{
+  "astudio": {
+    "name": "@magpie-community/opencode-astudio-auth",
+    "version": "0.1.3",
+    "license": "MIT",
+    "sha256": "752a90fe412a90d2bd998fcaf475881b400a619e9234b527c6bdada7f8c46506",
+    "files": {
+      "LICENSE": "a9b46ab33a20acc7c22e341571f002438ddbd2772a445dbeb0dda831fc43de98",
+      "README.md": "9a610c8c58462ce4f32901c251848c6a43b859e8872655efe8f7b1ec3f16ac3b",
+      "index.mjs": "5c736e1a5cea4496c12aaf5297b7de8a7d997ea73cf1d68b70f63b22e2645a7f",
+      "package.json": "2f17fc804be29ed97b5769ffbcc420d4ddeb3f899495a82ccb45cbcd7fbfe4a2"
+    }
+  },
+  "breezeblue": {
+    "name": "magpie-breezeblue-auth",
+    "version": "0.1.0",
+    "license": "MIT",
+    "sha256": "62fbf3a37c2eb28c614f50e62b8157ad443bf3b4bf8b192406dec6a0e68f6d7b",
+    "files": {
+      "index.mjs": "d6884d6f89bebe3fe4ea41c80de74a187036d00dd0f2703edff417fbbd716aa4",
+      "package.json": "6d603e5c5170494922f4b51ac0bc636dfbc758330db78fff760605fb70fb6776"
+    }
+  },
+  "codearts": {
+    "name": "@magpie-community/opencode-codearts-auth",
+    "version": "0.3.1",
+    "license": "MIT",
+    "sha256": "d2aed10651e42763833fcc4bd9df4fb1d08a7288194b270e09a9c34ca886bc58",
+    "files": {
+      "LICENSE": "b6106cd7507454765bcd528da9198390ec5b5204bdcf508fc4218d4c362e20a9",
+      "index.mjs": "8b818d6e4e18a5b9db7a0dfe2e8a264a28783c29af3413e1149d8bc748100cb8",
+      "opencode.mjs": "e44994599c1f6fdbc0e2898fb017195acc6630db0d4d2023ab15e8227b95563c",
+      "package.json": "a27d9f578cb56472559ef433dbbdaa22f2e6ea50975b3477c8b38e96c7666ba2"
+    }
+  },
+  "hub": {
+    "name": "magpie-providers-hub",
+    "version": "0.11.0",
+    "license": "MIT",
+    "sha256": "3295c1a09f4bb084313b8c2fd86404b17b7062a776a8c46120c428bd2fbaaee2",
+    "files": {
+      "LICENSE": "a9c507adfa4a73440305e052ae7c17fb22750c13e56286666715989392da6a8b",
+      "NOTICE.md": "c33e93be66a57a24337b42c2f8db969bf749a7aa295653eccd088ac2ef0dbea7",
+      "UPSTREAM.md": "e6399c80d0eafe2c309ef77adf2f10addc27b6061b61154899f54e84ac57c085",
+      "index.mjs": "9c5e9ba5291d88f216c9e3b532f81afa1ddac4fac10cf1fd653e77f1b15bdcbd",
+      "package.json": "a57ccbe17da5e21427b35e164a54d22d2abfb9de28919ea3a6aea165f52f4064",
+      "src/accio.mjs": "bb3866b095d2ecf3877637f0a3127dc829dd9f84d9fbe11202923c9bd816ca14",
+      "src/aggregate.mjs": "5db10418918a0ea5df0bdfeecc9d8a1d77b51c809b505b38fcd93bfd51a43f98",
+      "src/astudio.mjs": "93b59e68552a4592f16c85c4a22870948c0bbc0bc86c621431a80ad26334c95d",
+      "src/autoclaw.mjs": "7529fd8dba5dee3b7fb18e55f2aec67649526d5a6468c5da07fed24522d19ea9",
+      "src/icons.mjs": "f6c7ca0b337d71156555f9afede7da5389e25f16e363338fbe27a42f834b88f3",
+      "src/lobsterai.mjs": "8f7e366f7f47f418c3665f63850028e40f41c65a1a44a5868b6544af525f21ee",
+      "src/loomy.mjs": "8f9dea6bcdcd1534cc55b25e991829de8e200262d177ab055a8e9ec0d13c28af",
+      "src/magicrew-browser.mjs": "5715f9af2a2c6677df9c99b43b86dbb484008259b6ea5675c87327342367eea2",
+      "src/magicrew.mjs": "a5aa42c98b43a4b9d4c094d97989addc641ad344f0c6cb7b95b998347938221f",
+      "src/monkeycode-bridge.mjs": "c26d6ad20ed707253f957b4435f86c719235614e469837458660ea67480fe48c",
+      "src/monkeycode.mjs": "2466d2097cba0dbe1c0a3f723e6b2120849017ffe49842260848324c3784d6e5",
+      "src/shared.mjs": "67d9709d11c3872f8d59e1a70a587dfb036261b10dba8e823274973170ff00cd"
+    }
+  },
+  "longcat": {
+    "name": "magpie-longcat-auth",
+    "version": "0.1.0",
+    "license": "MIT",
+    "sha256": "b4f7f588af4fb1178dbb636e2235647efb845551fbdfe0308c311e2abfe00f79",
+    "files": {
+      "index.mjs": "07d47926809036387fdce65e65745ecbc204da3d514c7f979f3bb34b15f8e887",
+      "package.json": "84c2410e8c1668190724b1995120113b0215773172c8d1e47233f48b0ba44bab"
+    }
+  },
+  "marvis": {
+    "name": "magpie-marvis",
+    "version": "0.2.58",
+    "license": "MIT",
+    "sha256": "df1874a01fb1ea3f7473bd2b180f0d5446d3d65afa670db2611b9b9a22cbba32",
+    "files": {
+      "LICENSE": "198cab342ae561bead2179cc8c59c57f0265b06f131c1e8257e109367b978c07",
+      "NOTICE.md": "755a3f0904310986be1e725017e9557a58b193f243e2c8c3c1ac12b3b26c883a",
+      "index.mjs": "4338a29b07b5c6bd3f8aaa0774daebf4ab99a5947a210ff169991c99816fb544",
+      "native/marvis_beacon_shim.c": "b00cafb9083f8c886c8f2a1a2faf84926e0d3a6d2510e76e590da73e16a7c37d",
+      "package.json": "57849572ed8fb7e12435d959e17fefdffa20bab0a64f75d2c49c0f4db3806833",
+      "src/account-name.mjs": "38dad47fc302ac675fd982f02690715af925056a25d75506489be00c54a34574",
+      "src/auth.mjs": "f0bb780c3f2df10d8f6357b92e945038145758ef08dbae22741089cfaa42fe51",
+      "src/context.mjs": "42f92920e1d371cc0e1e0a51a83425d87005dc5c4e21af6e3e03539115b663ef",
+      "src/hooks/config.mjs": "ecb0a24afc2f9cbb3bb241e9aaca6830f757f9f199186dff49fd6ffa99832833",
+      "src/hooks/loader.mjs": "ae0aa0348e3e06f76bbaf5a25dbbe8b807cd2964ee8f8f9483150bc2e29279d2",
+      "src/hooks/methods.mjs": "99c750f542489ae6c8b18046fcb8df62818e23f282ee4391fae3c9eefb6ef7a5",
+      "src/hooks/models.mjs": "a8d29379dcf8d1a939f74f8fab0224ce39ae64ecc874a779e6813b5c1d044219",
+      "src/hooks/redact.mjs": "4d0923ea4306fe807bc6c902f0f2a7634e8946c1c2f3c4a2152e007933bef8e0",
+      "src/hooks/refresh.mjs": "f5a631e10b2bedbea354a3628f5eac68005768c6707924448fdf57e697c44eaa",
+      "src/hooks/usage.mjs": "7571bb6d88447e76874693b326abdb5a1c65a3a10d5be032ff8e7fb2213c8959",
+      "src/marvis/beacon-shim.mjs": "f5ae0d5609bfaebd717def817b91e41f2f9506f9697e480b2402c8a48a7156e2",
+      "src/marvis/browser.mjs": "d220696ef6662c28e2f6a31903ede138c65b2031b9d5ca473f580cab85dbca07",
+      "src/marvis/desktop.mjs": "dd49237f23fde8d37020128ba2638537ed258ad52a00c380a9795a00604a215b",
+      "src/marvis/device.mjs": "588de64801d4c9bad130c784f306363356df6b260c58d44779829c639da3de81",
+      "src/marvis/expiry.mjs": "c8660d0e08ff4b2294e2bcd98e86f94b7552fa6c81c2bfd4062b91a4344f1059",
+      "src/marvis/fingerprint.mjs": "2b1cf8396bd73c5c52ab1a99c78acce2c00ca397713f46b22d878083662c1e59",
+      "src/marvis/images.mjs": "fcaaeae43672a5788512e26da627d7c804eb96962e39d32f349b47c06f654849",
+      "src/marvis/login.mjs": "4b48aaf64dffe9bc7315c37f52cc1272d4c9919ea0040397b9f011e0905dbcd8",
+      "src/marvis/profile.mjs": "308f281416ff50c67020ee42a9dc0eca1f620f9abec5ae28bd7809d221619e7b",
+      "src/marvis/protocol.mjs": "a49f7ec9d8455e019a6b653ed060b6e729d0957640f232c03b89db073d741852",
+      "src/marvis/tool-schema.mjs": "af68c285425a96daa9cc2e7b985d98b44552537d919a78ed3a2e66e53b2f22a6",
+      "src/quota.mjs": "93e1ae191e6522467372b906a75d8a28b2739b3883b198be0957f740439b816d",
+      "src/refresh-lock.mjs": "50cd00f6cca9ae62688a2d02aff378e2c56242461ad4aa0e62fa99c5681500e5"
+    }
+  },
+  "minimax": {
+    "name": "@magpie-community/opencode-minimax-auth",
+    "version": "0.2.1",
+    "license": "MIT",
+    "sha256": "6cbdc7a813becf514bd2ffda5dfd3921d89c3334679f114e0050c5a4e4cf7e33",
+    "files": {
+      "connector-tools.mjs": "4ec7a0062450b5f466f19655def638098e7be0abbfc85040a3e4e2d319719d11",
+      "index.mjs": "ed3fe77a8693a7ec718ad4fb38124baafc61d827b65e5314245725fff9428d93",
+      "magpie.mjs": "c157e5647db120cf4da0f4b375a9915d38be2d574da3d976ca263b12341100ce",
+      "matrix-tools.json": "969113a1da9a21f0e337a2b92ba4ee9afc38f8206a4c8c8991b4378d34333b58",
+      "opencode.mjs": "c9f7d75bb28465213dfb908fc3d721b7739db1c174a3924a6172f80d1d727fbc",
+      "package.json": "78a95cb59b72208103961e1521af282cfd1dfe646766366f98fc8fff58732108",
+      "web-tools.mjs": "552428499b1d96ab71d4e62846280b13c781faac58a526329112439e87892a52"
+    }
+  },
+  "modelbest": {
+    "name": "magpie-modelbest-auth",
+    "version": "0.1.0",
+    "license": "MIT",
+    "sha256": "2b72cfefebb38e34d93f364c4fd8330fc6fd719cf883098b7401c66323be9b2f",
+    "files": {
+      "NOTICE.md": "c33470e7bb77a394f9a4b8ef1ff8922ffa01692a8af2c8b9582ec8e3e0888bce",
+      "browser.mjs": "7275bad8699fd5cd5520e3e58fb3b1d43dfc030d045cec44c7fcdc6e625baed7",
+      "console.mjs": "0ba2486b7f61311495e252d4db7c7de5ecb647725293d18db52aff211dd00f12",
+      "index.mjs": "aa601a351a3db704a6f1c715482bdaf69169902ee18fd21511a9a9241d50e494",
+      "models.mjs": "a14b00b929274af881f9017748afc5cb2821a579749ecfbf80c7e331cc2e421e",
+      "package.json": "058cca4187309ac0c8cbf384b87b1e41140d435b87f84960249ec4e54c2a5ce8"
+    }
+  },
+  "qoder": {
+    "name": "@magpie-community/opencode-qoder-auth",
+    "version": "0.2.61",
+    "license": "MIT",
+    "sha256": "0b135827d849e41f8fa3b78f7a5b8325d1eff41a3444759dfaf3aa20f5ec95da",
+    "files": {
+      "LICENSE-CLIProxyAPI": "879792e89cf1bdd6a8d446033ec87e30496f97dcafc4656dc53f641509b346a6",
+      "README.md": "ee3844d65a244d54343da71b0860013930669878e6c2a94b1eca4cd7bf9f256d",
+      "index.mjs": "232a269dbb2728407b6578fe65a9d1c29d9febfdf9419e42621b34368579d06f",
+      "opencode.mjs": "00a243700b052028de57ff757acedb083658beeb4eff44fcede5d32270a60b25",
+      "opencode2.mjs": "1548efa78c7f9054a4913017c1ab11638ff4cb6e37ac5c65ee9e069da652aa5a",
+      "package.json": "3281b8422f7a416490c0c401d9e5baa80e504b6e918ec8012c5d89ce1832f4c5"
+    }
+  },
+  "raccoon": {
+    "name": "@magpie-community/opencode-raccoon-auth",
+    "version": "0.1.6",
+    "license": "MIT",
+    "sha256": "78b36012501753e8c5aab9c1bed60fb3efc5022da6f415300198beafcb1841e9",
+    "files": {
+      "index.mjs": "d4a8aa49aa71d265bc56b78df6fabb1d1dfb720cf7b98d8fed417e7662757360",
+      "opencode.mjs": "efb362d4af9028357bc52b79c93ac0ac724022571c5426dd2984f41d4ad7fb18",
+      "package.json": "d2f7dade66a195b42aa5ff044aa0846c952b9c55cd1624384e6219ac0b7413c0"
+    }
+  },
+  "sensenova": {
+    "name": "st-sensenova-magpie",
+    "version": "0.2.3",
+    "license": "MIT",
+    "sha256": "b922d959f554c08ed67adacee7bbe0c8e3ea57ab26ce7f8fa841606226efb65e",
+    "files": {
+      "LICENSE": "8691e2591d8c89212db81e907b9ce695f0b790c19cc37b25c8a6b7926b93dcae",
+      "NOTICE.md": "10c4b8cc8251208ac714c68d2a0e7c8f811f5a1f222fda6b0de1026850029162",
+      "browser.mjs": "eb647fe85c645f5f4b30a116336b36da7c880c9d6fdda748e0f7f71bb02d7204",
+      "i18n.mjs": "33eb66f867e5b22fcf505c8c75017446fdba942d6db2ddaa19e501f878d5aeb7",
+      "index.mjs": "ac7c89a6ca0bb8627c2b375e5f1787f5ce8653c78e1e45e712e8a4eb8972bbdd",
+      "internal.mjs": "69e56e0cfad590ce1ccc3b8491997f072a7a3380578c64b1a73d275d8d744955",
+      "models.mjs": "e2976cabb9cc2a4af0fbc2ab127924ce264b5e025f0b504f41e4b5b86ba6b125",
+      "package.json": "f9c98aa1d322225ad4977a06a7419de606ffbfcd1e5256a4dbc5970ae94b0ffe",
+      "quota.mjs": "f4ba811211a2d6145cc40fec684909597c5cd00f9b30a2b72ad9c4e0e64a2e95",
+      "state.mjs": "724467e55eb50babe9fea24002b4afdb4b56fd899dcffcfd93063afebf2d8bbd"
+    }
+  },
+  "spark": {
+    "name": "magpie-spark-x2-auth",
+    "version": "0.2.0",
+    "license": "MIT",
+    "sha256": "0bc4ffa8af8800d449a1bc9ccd98e5143c9617aa4925628d63fa229a82d86110",
+    "files": {
+      "browser.mjs": "8e1999067492927e7b580e313901c349968b0405f9473ca9c2601fcb5fd40d79",
+      "console.mjs": "b1c13c54107dd84717af960d4cc90079fa79c3487cf6c96ec5f0081a51ad3698",
+      "index.mjs": "285f195296aab477f0592f22077553087ec352f68ba9e9a648186d8cd4111c74",
+      "models.generated.mjs": "ed8f95896feafa0f7f7671f947543ea86707d4441fce499b45e95f1fbe620fff",
+      "package.json": "0f68948655c3cb111f457688397e17e9e39927f204ee22114cd0289dd01809f5"
+    }
+  },
+  "workbuddy": {
+    "name": "@magpie-community/opencode-workbuddy-auth",
+    "version": "0.2.20",
+    "license": "MIT",
+    "sha256": "1411ddc200b78d175bb697e396b672198d31af6b80ef5dfe0c3544c7d3d15615",
+    "files": {
+      "index.mjs": "01d415568a83fe66caa6155fd693b8b80ab39015051285d97e9dd1fa5dd93723",
+      "opencode.mjs": "2219195390e62ca907145a12d442a1605f42a9f84320d6a6173167201e29eaa6",
+      "package.json": "3c723c3224439ce85962bd180d06abd671a19be2c72fe22ee481ddb59b1deb1c"
+    }
+  },
+  "zcode": {
+    "name": "@magpie-community/opencode-zcode-auth",
+    "version": "0.1.44",
+    "license": "MIT",
+    "sha256": "ad93cbb0e440b9234cbad2f4e55061aa552ccb60e759a77bc5eabdd200c05011",
+    "files": {
+      "index.mjs": "31a368e19898ba60eace740538c25fb59e25afe87efda65f0bb1e87999ef68cb",
+      "opencode.mjs": "c4649d4330b96a0a128b1b3eab19b5740e86d1640c300348e24e03f3b8e2f193",
+      "package.json": "7aa3b8d66873f5656551f8509ffe67faadba5f8cf03ca5096cbb847da4010cd8",
+      "prompt.mjs": "d33385ed84db77b7fc9fec59c9779d8dc4663be678fc3f6eef884d026d5df2ca"
+    }
+  },
+  "zen-free": {
+    "name": "@magpie-community/opencode-zen-free-auth",
+    "version": "0.1.24",
+    "license": "MIT",
+    "sha256": "570436bb1494261371db95c89db8982d1b5a79e25c17ec6aab82a22ae99ff27a",
+    "files": {
+      "LICENSE": "6b2b358f765653fcbc0fe30c0f185bed7d59c7831af1f1359a6780c2beac67ec",
+      "index.mjs": "6adb7ddc2634f97447abaf78d2f121e280cbf51fe19d33a261d48b90c0d7432f",
+      "models.mjs": "94a2617c67c34f41161fb0f742efc5726ca48b2c1bf430aeb5ccc2cb34ef56a1",
+      "opencode.mjs": "6abc560f0f1dc7febbfc8477ab994827c3c6a4314110b2307f6dc9781f375bfd",
+      "package.json": "a1b0802df3b3de3239b140a295800db0cc84bf5b563256801ded006224fd032a",
+      "provider.mjs": "e6790434a8b36c1156ecc4b50f2b5361b39a1b982741568a0628c6411b9ae107",
+      "stream.mjs": "d55af1d15b7f1481c4ab3df65b79e25020dcdfbbe26d9751d1ccdbbdd52c107f",
+      "tool-response.mjs": "93f37e4a1819667b15a093946708b799bb1c7fe4d6aadaacd757a305825cb891"
+    }
+  }
+}

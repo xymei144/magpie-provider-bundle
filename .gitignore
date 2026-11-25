@@ -1,0 +1,15 @@
+# Generated at runtime by runtime/snapshot.mjs: holds this machine's quota,
+# check-in outcomes and account labels.
+page/.data/
+
+# Tencent client binaries: never redistributed (see vendor/marvis/NOTICE.md).
+vendor/marvis/native/*.dll
+
+# Screenshots of this machine's accounts; never part of the repo.
+/preview*.png
+
+node_modules/
+*.zip
+*.tgz
+.DS_Store
+Thumbs.db

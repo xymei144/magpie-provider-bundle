@@ -1,0 +1,23 @@
+{
+  "name": "magpie-breezeblue-auth",
+  "version": "0.1.0",
+  "description": "Magpie provider for BreezeBlue (web session, credits balance, daily claim)",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs"
+  },
+  "files": [
+    "index.mjs"
+  ],
+  "keywords": [
+    "magpie",
+    "magpie-plugin",
+    "breezeblue",
+    "tts"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}

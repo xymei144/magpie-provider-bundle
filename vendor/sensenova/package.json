@@ -1,0 +1,52 @@
+{
+  "name": "st-sensenova-magpie",
+  "version": "0.2.3",
+  "description": "Magpie provider plugin for SenseNova（商汤 · 日日新）: models come live from GET /v1/models with no built-in list, plus the console's 积分额度 reported as native Magpie quota windows",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "internal.mjs",
+    "quota.mjs",
+    "models.mjs",
+    "i18n.mjs",
+    "assets/",
+    "README.md",
+    "NOTICE.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "magpie",
+    "magpie-plugin",
+    "opencode",
+    "opencode-plugin",
+    "opencode-auth",
+    "sensenova",
+    "商汤",
+    "日日新",
+    "token-plan",
+    "openai-compatible"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaolietu/st-sensenova-magpie.git"
+  },
+  "homepage": "https://github.com/xiaolietu/st-sensenova-magpie#readme",
+  "bugs": {
+    "url": "https://github.com/xiaolietu/st-sensenova-magpie/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "magpie": {
+    "icon": "https://platform.sensenova.cn/favicon.ico",
+    "maxConcurrency": 5
+  }
+}

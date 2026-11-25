@@ -1,0 +1,12 @@
+{
+  "name": "magpie-modelbest-auth",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ModelBest (面壁智能) provider for Magpie: OpenAI-compatible inference plus console balance and daily check-in",
+  "type": "module",
+  "main": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs"
+  },
+  "license": "MIT"
+}
