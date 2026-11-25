@@ -28,7 +28,7 @@ const checkinOutcomes = ["claimed", "done", "ineligible", "inactive", "captcha",
 
 // Plain objects carry `Object.prototype`, so an id like "constructor" would
 // read back an inherited function instead of a missing entry.
-const state = { providers: Object.create(null), update: null, native: null }
+const state = { providers: Object.create(null), native: null }
 let flushTimer = null
 let metaAt = 0
 let metaCache = {
@@ -648,20 +648,6 @@ export function recordError(spec, phase, error) {
   schedule()
 }
 
-// What the last git check said, for the page's one-line note. Never carries
-// a path or a credential: just the state word and a short message.
-export function recordUpdate(value) {
-  const state_ = typeof value?.state === "string" ? value.state.slice(0, 20) : "error"
-  state.update = {
-    state: state_,
-    message: safeText(value?.message, 160),
-    ...(value?.commit ? { commit: safeText(value.commit, 40) } : {}),
-    ...(Number.isFinite(value?.count) ? { count: value.count } : {}),
-    at: new Date().toISOString(),
-  }
-  schedule()
-}
-
 // Marvis 的原生组件（三个官方 DLL + 自编桥）齐不齐，给页面一行提示。
 export function recordNative(value) {
   const state_ = typeof value?.state === "string" ? value.state.slice(0, 20) : "error"
@@ -696,7 +682,6 @@ function flush() {
     const text = `window.__PROVIDER_BUNDLE_SNAPSHOT__ = ${JSON.stringify({
       at: new Date().toISOString(),
       providers: state.providers,
-      ...(state.update ? { update: state.update } : {}),
       ...(state.native ? { native: state.native } : {}),
     })};\n`
     // One temp file per writer: two processes refreshing the snapshot at the

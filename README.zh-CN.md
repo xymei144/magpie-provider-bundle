@@ -7,19 +7,19 @@
 ## 安装
 
 ```bash
-git clone https://github.com/xymei144/magpie-provider-bundle.git ~/magpie-plugins/magpie-provider-bundle
-magpie plugin add ~/magpie-plugins/magpie-provider-bundle
+magpie plugin add github:xymei144/magpie-provider-bundle
 ```
 
-必须保留是 git 仓库的那份，只有 git 安装才能自动更新。
+用 `github:` 规格安装（不要 clone 后加本地路径）：这样 Magpie 认得出它是 git 安装的插件，
+以后能用它自己的更新功能升级。
 
 ## 更新
 
-插件在后台每小时检查一次上游仓库有没有新提交，**只提示、不自动拉取**。总览页右上角显示
-`已是最新` 或 `有新版本`（悬停看差几个提交）。有新版本时双击仓库里的 `更新插件.cmd`
-（等价于 `git pull --ff-only`），Magpie 看到插件文件变化会自动重载，不用重启。
+在 Magpie 的「插件 → 已安装」页点插件的更新（或命令行 `magpie plugin update`），
+它会重新拉取仓库的最新提交，插件随即重载。
 
-不自动拉取是因为重载会打断正在进行的登录；更新的时机留给你自己决定。
+⚠️ 用本地路径（`magpie plugin add <文件夹>`）装的插件，Magpie 不会更新——需要更新就
+重新拉一遍或改用上面的 `github:` 安装方式。
 
 ## 登录
 

@@ -8,22 +8,19 @@ English | [简体中文](README.zh-CN.md)
 ## Install
 
 ```bash
-git clone https://github.com/xymei144/magpie-provider-bundle.git ~/magpie-plugins/magpie-provider-bundle
-magpie plugin add ~/magpie-plugins/magpie-provider-bundle
+magpie plugin add github:xymei144/magpie-provider-bundle
 ```
 
-Keep it a git clone: only a git checkout updates itself.
+Install it by its `github:` spec, not by cloning and adding a local folder: Magpie
+only treats a git-installed plugin as updatable.
 
 ## Update
 
-The plugin checks its upstream repo about once an hour and only reports what
-it finds; it never pulls. The overview page's top bar shows `已是最新` (up to
-date) or `有新版本` (a newer version exists; hover for how many commits).
+Use Magpie's own update on the Plugins → Installed page, or `magpie plugin update`.
+It pulls the newest commit and reloads the plugin.
 
-When a newer version shows up, run `更新插件.cmd` in the repo folder (it is
-`git pull --ff-only`). Magpie reloads the plugin when its files change, so
-nothing restarts. Updates stay manual because a reload can cut a sign-in
-short — the timing is yours.
+⚠️ A plugin added by folder (`magpie plugin add <folder>`) is never updated by
+Magpie; pull it again yourself, or reinstall with the `github:` spec above.
 
 ## Sign in
 

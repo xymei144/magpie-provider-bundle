@@ -430,30 +430,6 @@ function renderSnapshotTime() {
   if (node) node.textContent = at ? `快照 ${timeText(at, true)}` : "暂无快照"
 }
 
-// 插件自己的 git 更新状态：runtime/update.mjs 每小时查一次，写进快照。
-// 只提示有没有新版本；更新由用户运行仓库里的 更新插件.cmd（沙箱页面不能执行命令）。
-const UPDATE_TEXT = {
-  latest: ["已是最新", "muted"],
-  behind: ["有新版本", "warn"],
-  nogit: ["非 git 安装", "muted"],
-  error: ["更新检查失败", "bad"],
-}
-
-function renderUpdate() {
-  const node = document.getElementById("updateNote")
-  if (!node) return
-  const update = snapshot().update
-  if (!update || !update.state) {
-    node.hidden = true
-    return
-  }
-  const [text, tone] = UPDATE_TEXT[update.state] || ["更新状态未知", "muted"]
-  node.hidden = false
-  node.className = `snap update-note is-${tone}`
-  node.textContent = update.at ? `${text} · ${timeText(update.at)}` : text
-  node.title = update.message ? `${update.message}${update.commit ? `（${update.commit}）` : ""}` : text
-}
-
 // Marvis 的原生组件由 runtime/marvis-native.mjs 在缺失时自动补齐；
 // 齐了就不显示，下载中/失败各一行。
 const NATIVE_TEXT = {
@@ -1176,7 +1152,6 @@ function renderAll() {
   renderList()
   renderTools()
   renderSnapshotTime()
-  renderUpdate()
   renderNative()
   renderClock()
 }

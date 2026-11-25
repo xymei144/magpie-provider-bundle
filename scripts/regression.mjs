@@ -55,7 +55,7 @@ try {
   mkdirSync(join(tmp, "runtime"), { recursive: true })
   mkdirSync(join(tmp, "page"), { recursive: true })
   mkdirSync(join(tmp, "page", ".data"), { recursive: true })
-  for (const name of ["snapshot.mjs", "safe.mjs", "update.mjs", "marvis-native.mjs"]) {
+  for (const name of ["snapshot.mjs", "safe.mjs", "marvis-native.mjs"]) {
     cpSync(join(root, "runtime", name), join(tmp, "runtime", name))
   }
 

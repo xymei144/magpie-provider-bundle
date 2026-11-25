@@ -21,7 +21,6 @@ import {
   redactError,
 } from "./snapshot.mjs"
 import { ensureMarvisNative } from "./marvis-native.mjs"
-import { checkForUpdate } from "./update.mjs"
 
 const invalidJsonControl = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g
 
@@ -327,7 +326,6 @@ export function defineProvider(spec, load) {
   return async function provider(input = {}, options = {}) {
     recordMeta([spec.id])
     // 每小时至多一次，后台检查插件自身的 git 更新；失败只写进快照。
-    void checkForUpdate()
     void ensureMarvisNative()
     const settings =
       options && typeof options === "object" && !Array.isArray(options) ? options : {}
