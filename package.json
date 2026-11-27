@@ -16,7 +16,7 @@
     "vendor",
     "NOTICE.md",
     "README.md",
-    "README.zh-CN.md",
+    "README.en.md",
     "vendor.lock.json"
   ],
   "scripts": {
