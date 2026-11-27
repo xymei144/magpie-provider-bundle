@@ -72,7 +72,7 @@
     "name": "magpie-marvis",
     "version": "0.2.58",
     "license": "MIT",
-    "sha256": "df1874a01fb1ea3f7473bd2b180f0d5446d3d65afa670db2611b9b9a22cbba32",
+    "sha256": "4fe3b97ac1a324587c59a4474ee141d1b8b8ec3f94ae7f4cba5d7099ceea5fb1",
     "files": {
       "LICENSE": "198cab342ae561bead2179cc8c59c57f0265b06f131c1e8257e109367b978c07",
       "NOTICE.md": "755a3f0904310986be1e725017e9557a58b193f243e2c8c3c1ac12b3b26c883a",
@@ -83,7 +83,7 @@
       "src/auth.mjs": "f0bb780c3f2df10d8f6357b92e945038145758ef08dbae22741089cfaa42fe51",
       "src/context.mjs": "42f92920e1d371cc0e1e0a51a83425d87005dc5c4e21af6e3e03539115b663ef",
       "src/hooks/config.mjs": "ecb0a24afc2f9cbb3bb241e9aaca6830f757f9f199186dff49fd6ffa99832833",
-      "src/hooks/loader.mjs": "ae0aa0348e3e06f76bbaf5a25dbbe8b807cd2964ee8f8f9483150bc2e29279d2",
+      "src/hooks/loader.mjs": "4b88b779df308ad4c8b0fd2c59663a0daf8a47ee872bc2130e98c10772c5f1c0",
       "src/hooks/methods.mjs": "99c750f542489ae6c8b18046fcb8df62818e23f282ee4391fae3c9eefb6ef7a5",
       "src/hooks/models.mjs": "a8d29379dcf8d1a939f74f8fab0224ce39ae64ecc874a779e6813b5c1d044219",
       "src/hooks/redact.mjs": "4d0923ea4306fe807bc6c902f0f2a7634e8946c1c2f3c4a2152e007933bef8e0",

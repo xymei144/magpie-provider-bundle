@@ -1,6 +1,6 @@
 {
   "name": "magpie-provider-bundle",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "private": true,
   "description": "One Magpie plugin for all third-party providers, with a single overview page, per-provider switches and unchanged upstream drivers",
   "type": "module",

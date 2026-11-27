@@ -9,7 +9,7 @@
 // ⚠ 实测：把 UAL 签名头（md5 body+ts+accessKey+nonce）加到模型网关上是**错的** ——
 //   会从 403 风控变成 401 登录态过期。那套只用于 /v3/*。
 
-import { BASE_V1, DEFAULT_MODEL, DISPLAY_BY_SLOT, PROVIDER, canonicalModelId, isUnavailableModel, FIRST_LINE_OPTION_KEY } from "../context.mjs"
+import { BASE, BASE_V1, DEFAULT_MODEL, DISPLAY_BY_SLOT, PROVIDER, canonicalModelId, isUnavailableModel, FIRST_LINE_OPTION_KEY } from "../context.mjs"
 import { llmHeaders } from "../marvis/protocol.mjs"
 import { normalizeTools } from "../marvis/tool-schema.mjs"
 import { InvalidImageError, normalizeMessages } from "../marvis/images.mjs"
@@ -27,6 +27,16 @@ const MODEL_ISSUE =
 
 /** 风控（uskey 配额用完 / 缺 MarvisExt）—— 可重试，但要换新 uskey */
 const RISK_BLOCK = /4100404|风控拦截/
+
+/**
+ * 模型网关的补全路径。
+ *
+ * ⚠ 2026-11-27 实测：`/v1/chat/completions` 对所有账号、任何 uskey（官方 SDK 现签/随机/缺失）
+ *   一律 `403 {"code":4100404}`，而同一份 OpenAI 请求体、同一套 UAL 头打到 `/v1/messages`
+ *   正常 200（含 SSE + tools + reasoning_content）。官方客户端现在走的就是后者。
+ *   所以补全请求改投 `/v1/messages`，`/v1/chat/completions` 只在它 404 时兜底。
+ */
+const CHAT_UPSTREAM = `${BASE}/v1/messages`
 
 /** 登录态过期 */
 const AUTH_EXPIRED = /4100403|登录态过期|未登录/
@@ -426,7 +436,14 @@ export function loaderHook(input, options = {}) {
             delete merged["content-encoding"]
             delete merged["Content-Encoding"]
           }
-          return fetch(url, { ...init, body: payload, headers: merged })
+          // 补全请求改投 `/v1/messages`（见 CHAT_UPSTREAM）；其余路径原样。
+          const target = /\/chat\/completions\b/.test(url) ? CHAT_UPSTREAM : url
+          const res = await fetch(target, { ...init, body: payload, headers: merged })
+          // 端点若被撤掉（404），退回原路径，保持旧行为
+          if (target !== url && res.status === 404) {
+            return fetch(url, { ...init, body: payload, headers: merged })
+          }
+          return res
         }
 
         /** 上游给流式响应时带的是 text/plain，但 body 是标准 SSE —— 归一化 content-type */
